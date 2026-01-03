@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:replace="~{base :: layout(~{::section})}">
+		<section>
+			<div class="container p-5">
+				<div class="row">
+					<div class="col-md-8 p-4 offset-md-2">
+						<form action="/saveEmployee" method="post">
+							
+							<input type="hidden" name="id" th:value="${employee.id}">
+							
+						    <div>
+						      <label for="nom">Nom</label>
+						      <input class="form-control" name="nom" th:value="${employee.nom}" type="text" required/>
+						    </div>
+						    <div>
+						      <label for="prenom">Prenom</label>
+						      <input class="form-control" name="prenom" th:value="${employee.prenom}" type="text" required/>
+						    </div>
+						    <div>
+						      <label for="age">Age</label>
+						      <input class="form-control" type="number" name="age" th:value="${employee.age}" required/>
+						    </div>
+							<div>
+						      <label for="poste">Poste occupé</label>
+						      <select class="form-control" name="poste" id="poste" type="Poste" required>
+								<option value="">-- Selectionner --<option>
+								<option th:value="'Programmeur'" 
+									    th:selected="${employee.poste == 'Programmeur'}">Programmeur</option>
+								<option th:value="'Comptable'" 
+										th:selected="${employee.poste == 'Comptable'}">Comptable</option>
+							  </select>
+						    </div>
+							
+							<hr>
+							
+							<button type="submit" class="btn btn-primary col-md-2">Enregistrer</button>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>
